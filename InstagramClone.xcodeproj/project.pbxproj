@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE08D59B278890B600049BF6 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE08D59A278890B600049BF6 /* FeedCell.swift */; };
+		CE08D59F278891C900049BF6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE08D59E278891C900049BF6 /* Extensions.swift */; };
 		CE28E99B2787369000DE71A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE28E99A2787369000DE71A4 /* AppDelegate.swift */; };
 		CE28E99D2787369000DE71A4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE28E99C2787369000DE71A4 /* SceneDelegate.swift */; };
 		CE28E99F2787369000DE71A4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE28E99E2787369000DE71A4 /* ViewController.swift */; };
@@ -22,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE08D59A278890B600049BF6 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
+		CE08D59E278891C900049BF6 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		CE28E9972787369000DE71A4 /* InstagramClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE28E99A2787369000DE71A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE28E99C2787369000DE71A4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +92,7 @@
 		CE28E9AE278736B900DE71A4 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				CE08D59E278891C900049BF6 /* Extensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -122,6 +127,7 @@
 		CE28E9B3278736D200DE71A4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CE08D59A278890B600049BF6 /* FeedCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -205,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE28E99F2787369000DE71A4 /* ViewController.swift in Sources */,
+				CE08D59B278890B600049BF6 /* FeedCell.swift in Sources */,
 				CE28E9BC27873B8200DE71A4 /* ImageSelectorController.swift in Sources */,
 				CE28E9BE27873B9100DE71A4 /* NotificationController.swift in Sources */,
 				CE28E9BA27873B7200DE71A4 /* SearchController.swift in Sources */,
@@ -212,6 +219,7 @@
 				CE28E9C027873BA600DE71A4 /* ProfileController.swift in Sources */,
 				CE28E9B827873B6000DE71A4 /* FeedController.swift in Sources */,
 				CE28E9B62787379300DE71A4 /* MainTabController.swift in Sources */,
+				CE08D59F278891C900049BF6 /* Extensions.swift in Sources */,
 				CE28E99D2787369000DE71A4 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -289,7 +297,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -344,7 +352,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
