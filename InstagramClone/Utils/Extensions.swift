@@ -37,6 +37,17 @@ import UIKit
 //    }
 //}
 
+extension UIViewController {
+    // 배경색 그라데이션으로 만들기
+    func configureGradientLayer() {
+        let gradient = CAGradientLayer()
+        gradient.colors = [UIColor.systemPurple.cgColor, UIColor.systemBlue.cgColor]
+        gradient.locations = [0, 1]
+        view.layer.addSublayer(gradient)
+        gradient.frame = view.frame
+    }
+}
+
 extension UIButton {
     func attributedTitle(firstPart: String, secondPart: String) {
         let atts: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor(white: 1, alpha: 0.87), .font: UIFont.systemFont(ofSize: 16)]
@@ -46,6 +57,16 @@ extension UIButton {
         attributedTitle.append(NSAttributedString(string: secondPart, attributes: boldAtts))
         
         setAttributedTitle(attributedTitle, for: .normal)
+    }
+    
+    func customTitle(title: String) {
+        setTitle(title, for: .normal)
+        setTitleColor(.white, for: .normal)
+        backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1).withAlphaComponent(0.5)
+        layer.cornerRadius = 5
+        setHeight(50)
+        titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        isEnabled = false
     }
 }
 
