@@ -70,8 +70,14 @@ class RegistrationController: UIViewController {
         guard let profileImage = self.profileImage else { return }
 
         let credentials = AuthCredentials(email: email, password: password, fullname: fullname, username: username, profileImage: profileImage)
-        
-        AuthService.registerUser(withCredeitial: credentials)
+        AuthService.registerUser(withCredeitial: credentials) { error in
+            if let error = error {
+                print("DEBUG: Failed to register user \(error.localizedDescription)")
+                return
+            }
+            
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     @objc func handleShowLogin() {
@@ -126,7 +132,6 @@ class RegistrationController: UIViewController {
         passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         fullnameTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         usernameTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
-        
     }
 }
 
