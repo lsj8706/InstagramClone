@@ -23,6 +23,8 @@
 		CE28E9BC27873B8200DE71A4 /* ImageSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE28E9BB27873B8200DE71A4 /* ImageSelectorController.swift */; };
 		CE28E9BE27873B9100DE71A4 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE28E9BD27873B9100DE71A4 /* NotificationController.swift */; };
 		CE28E9C027873BA600DE71A4 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE28E9BF27873BA600DE71A4 /* ProfileController.swift */; };
+		CE5720CD2795A58C00E02040 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5720CC2795A58C00E02040 /* ProfileCell.swift */; };
+		CE5720CF2795A5A400E02040 /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5720CE2795A5A400E02040 /* ProfileHeader.swift */; };
 		CE5B85A0278AC16C00602080 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B859F278AC16C00602080 /* LoginController.swift */; };
 		CE5B85A2278AC18200602080 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B85A1278AC18200602080 /* RegistrationController.swift */; };
 		CE5B85A4278ACEBB00602080 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B85A3278ACEBB00602080 /* CustomTextField.swift */; };
@@ -52,6 +54,8 @@
 		CE28E9BB27873B8200DE71A4 /* ImageSelectorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectorController.swift; sourceTree = "<group>"; };
 		CE28E9BD27873B9100DE71A4 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		CE28E9BF27873BA600DE71A4 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		CE5720CC2795A58C00E02040 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
+		CE5720CE2795A5A400E02040 /* ProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
 		CE5B859F278AC16C00602080 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		CE5B85A1278AC18200602080 /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		CE5B85A3278ACEBB00602080 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
@@ -161,6 +165,7 @@
 		CE28E9B3278736D200DE71A4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CE5720D02795A5A700E02040 /* Profile */,
 				CE08D59A278890B600049BF6 /* FeedCell.swift */,
 				CE5B85A3278ACEBB00602080 /* CustomTextField.swift */,
 			);
@@ -172,6 +177,15 @@
 			children = (
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		CE5720D02795A5A700E02040 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				CE5720CC2795A58C00E02040 /* ProfileCell.swift */,
+				CE5720CE2795A5A400E02040 /* ProfileHeader.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		CE5B859E278AC15800602080 /* Authentication */ = {
@@ -309,6 +323,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE5B85A4278ACEBB00602080 /* CustomTextField.swift in Sources */,
+				CE5720CF2795A5A400E02040 /* ProfileHeader.swift in Sources */,
 				CE28E99F2787369000DE71A4 /* ViewController.swift in Sources */,
 				CE5B85A0278AC16C00602080 /* LoginController.swift in Sources */,
 				CE08D59B278890B600049BF6 /* FeedCell.swift in Sources */,
@@ -323,6 +338,7 @@
 				CE28E9B62787379300DE71A4 /* MainTabController.swift in Sources */,
 				CE825A652791A8F700E528B7 /* ImageUploader.swift in Sources */,
 				CE825A672791A90500E528B7 /* AuthService.swift in Sources */,
+				CE5720CD2795A58C00E02040 /* ProfileCell.swift in Sources */,
 				CE08D59F278891C900049BF6 /* Extensions.swift in Sources */,
 				CE28E99D2787369000DE71A4 /* SceneDelegate.swift in Sources */,
 			);
