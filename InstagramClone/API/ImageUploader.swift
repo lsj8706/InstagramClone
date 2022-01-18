@@ -8,6 +8,7 @@
 import FirebaseStorage
 import UIKit
 
+// 이미지를 firebase에 올리고 해당 url 받아오기
 struct ImageUploader {
     static func uploadImage(image: UIImage, completion: @escaping(String) -> Void) {
         guard let imageData = image.jpegData(compressionQuality: 0.75) else { return }
