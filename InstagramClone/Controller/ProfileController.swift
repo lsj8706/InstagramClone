@@ -14,32 +14,32 @@ class ProfileController: UICollectionViewController {
     
     //MARK: - Properties
     
-    var user: User? {
-        // reloadeData()를 해줘야 user 객체가 생성된 뒤에 콜랙션뷰가 갱신되서 유저 정보가 화면에 나오게 된다.
-        didSet { collectionView.reloadData() }
-    }
+    private var user: User
+    
     
     //MARK: - Lifecycle
+    
+    init(user: User) {
+        self.user = user
+        super.init(collectionViewLayout: UICollectionViewFlowLayout())
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
-        
-        fetchUser()
     }
     
     //MARK: - API
     
-    func fetchUser() {
-        UserService.fetchUser { user in
-            self.user = user
-            self.navigationItem.title = user.username
-        }
-    }
     
     //MARK: - Helpers
     
     func configureCollectionView() {
+        navigationItem.title = user.username
         collectionView.backgroundColor = .white
         // 사용할 cell과 header 등록
         collectionView.register(ProfileCell.self, forCellWithReuseIdentifier: cellIdentifier)
@@ -66,10 +66,7 @@ extension ProfileController {
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerIdentifier, for: indexPath) as! ProfileHeader
         
-        // 처음 이 함수가 호출 되었을 때는 user객체가 생성되기 전이기 때문에 안전하게 if let으로 unwrapping 해야 한다. (collectionView.reloadData()가 실행되면 이 함수가 다시 실행되고 그때는 user 객체가 생성된 후이다.)
-        if let user = user {
-            header.viewModel = ProfileHeaderViewModel(user: user)
-        }
+        header.viewModel = ProfileHeaderViewModel(user: user)
         
         return header
         

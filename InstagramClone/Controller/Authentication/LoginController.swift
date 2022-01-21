@@ -7,11 +7,17 @@
 
 import UIKit
 
+protocol AuthenticationDelegate: AnyObject {
+    func authenticationDidComplete()
+}
+
 class LoginController: UIViewController {
     
     //MARK: - Properties
     
     private var viewModel = LoginViewModel()
+    
+    weak var delegate: AuthenticationDelegate?
 
     private let iconImage:UIImageView = {
         let iv = UIImageView(image: UIImage(imageLiteralResourceName: "Instagram_logo_white"))
@@ -75,12 +81,15 @@ class LoginController: UIViewController {
                 return
             }
             
-            self.dismiss(animated: true, completion: nil)
+            // 로그인 화면 dismiss하고 로그인한 계정 정보 fetchUser() 시키기
+            self.delegate?.authenticationDidComplete()
         }
     }
     
     @objc func handleShowSignUp(){
         let controller = RegistrationController()
+        // RegistrationController 에서도 회원가입이 완료되면 dismiss하고 회원가입한 계정 정보 fetchUser() 하기 위해 delegate 설정
+        controller.delegate = delegate
         navigationController?.pushViewController(controller, animated: true)
     }
     
