@@ -29,6 +29,7 @@
 		CE5B85A0278AC16C00602080 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B859F278AC16C00602080 /* LoginController.swift */; };
 		CE5B85A2278AC18200602080 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B85A1278AC18200602080 /* RegistrationController.swift */; };
 		CE5B85A4278ACEBB00602080 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B85A3278ACEBB00602080 /* CustomTextField.swift */; };
+		CE7FBE0E279D81B0009C00A6 /* UserCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7FBE0D279D81B0009C00A6 /* UserCellViewModel.swift */; };
 		CE825A652791A8F700E528B7 /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE825A642791A8F700E528B7 /* ImageUploader.swift */; };
 		CE825A672791A90500E528B7 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE825A662791A90400E528B7 /* AuthService.swift */; };
 		CEBE8CC22796E69400DCD4F6 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBE8CC12796E69400DCD4F6 /* UserService.swift */; };
@@ -65,6 +66,7 @@
 		CE5B859F278AC16C00602080 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		CE5B85A1278AC18200602080 /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		CE5B85A3278ACEBB00602080 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		CE7FBE0D279D81B0009C00A6 /* UserCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellViewModel.swift; sourceTree = "<group>"; };
 		CE825A642791A8F700E528B7 /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
 		CE825A662791A90400E528B7 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		CEBE8CC12796E69400DCD4F6 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 			children = (
 				CEEBBA9C278C7DC500053816 /* AuthenticationViewModel.swift */,
 				CEBE8CC72796ED6800DCD4F6 /* ProfileHeaderViewModel.swift */,
+				CE7FBE0D279D81B0009C00A6 /* UserCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 				CEBE8CC82796ED6800DCD4F6 /* ProfileHeaderViewModel.swift in Sources */,
 				CEBE8CC42796E6D800DCD4F6 /* Constants.swift in Sources */,
 				CE5B85A2278AC18200602080 /* RegistrationController.swift in Sources */,
+				CE7FBE0E279D81B0009C00A6 /* UserCellViewModel.swift in Sources */,
 				CE28E9B827873B6000DE71A4 /* FeedController.swift in Sources */,
 				CE28E9B62787379300DE71A4 /* MainTabController.swift in Sources */,
 				CE825A652791A8F700E528B7 /* ImageUploader.swift in Sources */,
