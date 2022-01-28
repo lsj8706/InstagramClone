@@ -11,6 +11,8 @@
 		CE0497E22792C90300A72472 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE0497E12792C90300A72472 /* GoogleService-Info.plist */; };
 		CE08D59B278890B600049BF6 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE08D59A278890B600049BF6 /* FeedCell.swift */; };
 		CE08D59F278891C900049BF6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE08D59E278891C900049BF6 /* Extensions.swift */; };
+		CE09978127A43ECC00230FEA /* UploadPostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE09978027A43ECC00230FEA /* UploadPostController.swift */; };
+		CE09978327A4419700230FEA /* InputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE09978227A4419700230FEA /* InputTextView.swift */; };
 		CE28E99B2787369000DE71A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE28E99A2787369000DE71A4 /* AppDelegate.swift */; };
 		CE28E99D2787369000DE71A4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE28E99C2787369000DE71A4 /* SceneDelegate.swift */; };
 		CE28E99F2787369000DE71A4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE28E99E2787369000DE71A4 /* ViewController.swift */; };
@@ -46,6 +48,8 @@
 		CE0497E12792C90300A72472 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		CE08D59A278890B600049BF6 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		CE08D59E278891C900049BF6 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		CE09978027A43ECC00230FEA /* UploadPostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPostController.swift; sourceTree = "<group>"; };
+		CE09978227A4419700230FEA /* InputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextView.swift; sourceTree = "<group>"; };
 		CE28E9972787369000DE71A4 /* InstagramClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE28E99A2787369000DE71A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE28E99C2787369000DE71A4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -164,6 +168,7 @@
 				CE28E9BB27873B8200DE71A4 /* ImageSelectorController.swift */,
 				CE28E9BD27873B9100DE71A4 /* NotificationController.swift */,
 				CE28E9BF27873BA600DE71A4 /* ProfileController.swift */,
+				CE09978027A43ECC00230FEA /* UploadPostController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -185,6 +190,7 @@
 				CE08D59A278890B600049BF6 /* FeedCell.swift */,
 				CE5B85A3278ACEBB00602080 /* CustomTextField.swift */,
 				CE347953279B02B6001D3EF7 /* UserCell.swift */,
+				CE09978227A4419700230FEA /* InputTextView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -342,6 +348,7 @@
 			files = (
 				CE5B85A4278ACEBB00602080 /* CustomTextField.swift in Sources */,
 				CE5720CF2795A5A400E02040 /* ProfileHeader.swift in Sources */,
+				CE09978127A43ECC00230FEA /* UploadPostController.swift in Sources */,
 				CE28E99F2787369000DE71A4 /* ViewController.swift in Sources */,
 				CE5B85A0278AC16C00602080 /* LoginController.swift in Sources */,
 				CE08D59B278890B600049BF6 /* FeedCell.swift in Sources */,
@@ -354,6 +361,7 @@
 				CEBE8CC62796E89600DCD4F6 /* User.swift in Sources */,
 				CE28E9C027873BA600DE71A4 /* ProfileController.swift in Sources */,
 				CEBE8CC82796ED6800DCD4F6 /* ProfileHeaderViewModel.swift in Sources */,
+				CE09978327A4419700230FEA /* InputTextView.swift in Sources */,
 				CEBE8CC42796E6D800DCD4F6 /* Constants.swift in Sources */,
 				CE5B85A2278AC18200602080 /* RegistrationController.swift in Sources */,
 				CE7FBE0E279D81B0009C00A6 /* UserCellViewModel.swift in Sources */,

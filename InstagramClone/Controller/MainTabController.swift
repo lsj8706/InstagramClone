@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import YPImagePicker
 
 class MainTabController: UITabBarController {
     
@@ -52,6 +53,8 @@ class MainTabController: UITabBarController {
     
     func configureViewControllers(withUser user: User) {
         view.backgroundColor = .white
+        // 탭바 delegate 설정
+        self.delegate = self
         
         let layout = UICollectionViewFlowLayout()
         
@@ -79,6 +82,20 @@ class MainTabController: UITabBarController {
         return nav
     }
     
+    // 이미지 선택 후에 돌아가기
+    func didFinishPickingMedia(_ picker: YPImagePicker) {
+        picker.didFinishPicking { items, _ in
+            picker.dismiss(animated: false) {
+                guard let selectedImage = items.singlePhoto?.image else { return }
+                
+                let controller = UploadPostsController()
+                let nav = UINavigationController(rootViewController: controller)
+                nav.modalPresentationStyle = .fullScreen
+                self.present(nav, animated: false, completion: nil)
+            }
+        }
+    }
+    
 }
 
 
@@ -90,4 +107,35 @@ extension MainTabController: AuthenticationDelegate {
         fetchUser()
         self.dismiss(animated: true, completion: nil)
     }
+}
+
+
+//MARK: - UITabBarControllerDelegate
+/// 이미지 선택 화면 설정. YPImagePicker 패키지 사용
+extension MainTabController: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        let index = viewControllers?.firstIndex(of: viewController)
+        
+        if index == 2 {
+            // YPImagePicker 설정
+            var config = YPImagePickerConfiguration()
+            config.library.mediaType = .photo
+            config.shouldSaveNewPicturesToAlbum = false
+            config.startOnScreen = .library
+            config.screens = [.library]
+            config.hidesStatusBar = false
+            config.hidesBottomBar = false
+            config.library.maxNumberOfItems = 1
+            
+            let picker = YPImagePicker(configuration: config)
+            picker.modalPresentationStyle = .fullScreen
+            present(picker, animated: true, completion: nil)
+            
+            // 이미지 선택 또는 취소버튼 누른 후 기존 화면으로 돌아가기
+            didFinishPickingMedia(picker)
+        }
+        
+        return true
+    }
+    
 }
