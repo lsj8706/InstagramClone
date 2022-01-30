@@ -7,15 +7,24 @@
 
 import UIKit
 
+protocol UploadPostsControllerDelegate: AnyObject {
+    func controllerDidFinishUploadingPost(_ controller: UploadPostsController)
+}
+
 class UploadPostsController: UIViewController {
     
     //MARK: - Properties
+    
+    weak var delegate: UploadPostsControllerDelegate?
+    
+    var selectedImage: UIImage? {
+        didSet{ photoImageView.image = selectedImage }
+    }
     
     private let photoImageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleToFill
         iv.clipsToBounds = true
-        iv.image = #imageLiteral(resourceName: "venom-7")
         return iv
     }()
     
@@ -50,7 +59,22 @@ class UploadPostsController: UIViewController {
     }
     
     @objc func didTapDone() {
-        print("DEBUG: Share posts")
+        guard let image = selectedImage else { return }
+        guard let caption = captionTextView.text else { return }
+        
+        showLoader(true)    // 로딩 화면 보여주기
+        
+        PostService.uploadPost(caption: caption, image: image) { error in
+            
+            self.showLoader(false)  // 로딩 화면 사라지게 하기
+            if let error = error {
+                print("DEBUG: Failed to upload post with error \(error.localizedDescription)")
+                return
+            }
+            
+            self.delegate?.controllerDidFinishUploadingPost(self)
+            
+        }
     }
     
     

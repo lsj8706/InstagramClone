@@ -89,6 +89,8 @@ class MainTabController: UITabBarController {
                 guard let selectedImage = items.singlePhoto?.image else { return }
                 
                 let controller = UploadPostsController()
+                controller.selectedImage = selectedImage
+                controller.delegate = self
                 let nav = UINavigationController(rootViewController: controller)
                 nav.modalPresentationStyle = .fullScreen
                 self.present(nav, animated: false, completion: nil)
@@ -136,6 +138,18 @@ extension MainTabController: UITabBarControllerDelegate {
         }
         
         return true
+    }
+    
+}
+
+
+//MARK: - UploadPostsControllerDelegate
+extension MainTabController: UploadPostsControllerDelegate {
+    
+    // Post를 업로드 한 후에 Feed화면으로 돌아가도록 하는 함수 => delegate 패턴 사용
+    func controllerDidFinishUploadingPost(_ controller: UploadPostsController) {
+        selectedIndex = 0
+        controller.dismiss(animated: true, completion: nil)
     }
     
 }
