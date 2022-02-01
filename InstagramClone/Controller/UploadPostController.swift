@@ -17,6 +17,8 @@ class UploadPostsController: UIViewController {
     
     weak var delegate: UploadPostsControllerDelegate?
     
+    var currentUser: User?
+    
     var selectedImage: UIImage? {
         didSet{ photoImageView.image = selectedImage }
     }
@@ -61,10 +63,11 @@ class UploadPostsController: UIViewController {
     @objc func didTapDone() {
         guard let image = selectedImage else { return }
         guard let caption = captionTextView.text else { return }
+        guard let user = currentUser else { return }
         
         showLoader(true)    // 로딩 화면 보여주기
         
-        PostService.uploadPost(caption: caption, image: image) { error in
+        PostService.uploadPost(caption: caption, image: image, user: user) { error in
             
             self.showLoader(false)  // 로딩 화면 사라지게 하기
             if let error = error {
