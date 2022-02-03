@@ -151,6 +151,11 @@ extension MainTabController: UploadPostsControllerDelegate {
     func controllerDidFinishUploadingPost(_ controller: UploadPostsController) {
         selectedIndex = 0
         controller.dismiss(animated: true, completion: nil)
+        
+        // feedController에 접근하여 post들을 refresh(다시 fetch)하기
+        guard let feedNav = viewControllers?.first as? UINavigationController else { return }
+        guard let feed = feedNav.viewControllers.first as? FeedController else { return }
+        feed.handleRefresh()
     }
     
 }
