@@ -17,6 +17,8 @@ class FeedController: UICollectionViewController {
     
     private var posts = [Post]()
     
+    var post: Post?
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +29,6 @@ class FeedController: UICollectionViewController {
     //MARK: - Actions
     
     @objc func handleRefresh() {
-        print("DEBUG: handle Refresh...")
         fetchPosts()
     }
     
@@ -47,9 +48,9 @@ class FeedController: UICollectionViewController {
     //MARK: - API
     
     func fetchPosts() {
+        guard post == nil else { return } // feed 화면에서 보여주어야 할 feed가 특정한 한개의 post라면 모든 post를 불러올 필요 x
         PostService.fetchPosts { posts in
             self.posts = posts
-            print("DEBUG: Did fetch Posts")
             self.collectionView.refreshControl?.endRefreshing()
             self.collectionView.reloadData()
         }
@@ -63,7 +64,9 @@ class FeedController: UICollectionViewController {
         // 콜렉션 뷰에 cell 등록
         collectionView.register(FeedCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
+        if post == nil {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
+        }
         
         navigationItem.title = "Feed"
         
@@ -80,12 +83,19 @@ extension FeedController {
     
     // collectionView에 들어갈 아이템의 개수 정의
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return posts.count
+        return post == nil ? posts.count : 1
     }
     // collectionView의 각 cell을 정의
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FeedCell
-        cell.viewModel = PostViewModel(post: posts[indexPath.row])
+        
+        if let post = post {
+            cell.viewModel = PostViewModel(post: post)
+            
+        } else {
+            cell.viewModel = PostViewModel(post: posts[indexPath.row])
+        }
+        
         return cell
     }
 }
