@@ -46,7 +46,13 @@ struct PostService {
         query.getDocuments { snapshot, error in
             guard let documents = snapshot?.documents else { return }
             
-            let posts = documents.map({ Post(postId: $0.documentID, dictionary: $0.data()) })
+            var posts = documents.map({ Post(postId: $0.documentID, dictionary: $0.data()) })
+            
+            // 시간순으로 post 정렬
+            posts.sort { (post1, post2) -> Bool in
+                return post1.timestamp.seconds > post2.timestamp.seconds
+            }
+            
             completion(posts)
         }
     }
