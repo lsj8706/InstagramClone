@@ -13,6 +13,7 @@
 		CE08D59F278891C900049BF6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE08D59E278891C900049BF6 /* Extensions.swift */; };
 		CE09978127A43ECC00230FEA /* UploadPostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE09978027A43ECC00230FEA /* UploadPostController.swift */; };
 		CE09978327A4419700230FEA /* InputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE09978227A4419700230FEA /* InputTextView.swift */; };
+		CE0BA68927B414BC0087B7CA /* CommentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0BA68827B414BC0087B7CA /* CommentService.swift */; };
 		CE28E99B2787369000DE71A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE28E99A2787369000DE71A4 /* AppDelegate.swift */; };
 		CE28E99D2787369000DE71A4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE28E99C2787369000DE71A4 /* SceneDelegate.swift */; };
 		CE28E99F2787369000DE71A4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE28E99E2787369000DE71A4 /* ViewController.swift */; };
@@ -56,6 +57,7 @@
 		CE08D59E278891C900049BF6 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		CE09978027A43ECC00230FEA /* UploadPostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPostController.swift; sourceTree = "<group>"; };
 		CE09978227A4419700230FEA /* InputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextView.swift; sourceTree = "<group>"; };
+		CE0BA68827B414BC0087B7CA /* CommentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentService.swift; sourceTree = "<group>"; };
 		CE28E9972787369000DE71A4 /* InstagramClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE28E99A2787369000DE71A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE28E99C2787369000DE71A4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				CE825A662791A90400E528B7 /* AuthService.swift */,
 				CEBE8CC12796E69400DCD4F6 /* UserService.swift */,
 				CE8571F727A6B0E100F3047A /* PostService.swift */,
+				CE0BA68827B414BC0087B7CA /* CommentService.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				CE5B85A0278AC16C00602080 /* LoginController.swift in Sources */,
 				CE08D59B278890B600049BF6 /* FeedCell.swift in Sources */,
 				CE28E9BC27873B8200DE71A4 /* ImageSelectorController.swift in Sources */,
+				CE0BA68927B414BC0087B7CA /* CommentService.swift in Sources */,
 				CE28E9BE27873B9100DE71A4 /* NotificationController.swift in Sources */,
 				CEEBBA9D278C7DC500053816 /* AuthenticationViewModel.swift in Sources */,
 				CE347954279B02B6001D3EF7 /* UserCell.swift in Sources */,

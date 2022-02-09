@@ -7,10 +7,15 @@
 
 import UIKit
 
+protocol CommentInputAccessoryViewDelegate: AnyObject {
+    func inputView(_ inputView: CommentInputAccessoryView, wantsToUploadComment comment: String)
+}
 
 class CommentInputAccessoryView: UIView {
     
     //MARK: - Properties
+    
+    weak var delegate: CommentInputAccessoryViewDelegate?
     
     private let commentTextView: InputTextView = {
         let tv = InputTextView()
@@ -34,6 +39,8 @@ class CommentInputAccessoryView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        backgroundColor = .white
         
         // 키보드가 입력되면 그 높이만큼 위로 올라가도록 함
         autoresizingMask = .flexibleHeight
@@ -63,7 +70,15 @@ class CommentInputAccessoryView: UIView {
     //MARK: - Actions
     
     @objc func handlePostTapped() {
-        
+        delegate?.inputView(self, wantsToUploadComment: commentTextView.text)
     }
+    
+    //MARK: - Helpers
+    
+    func clearCommentTextView() {
+        commentTextView.text = nil
+        commentTextView.placeholderLabel.isHidden = false
+    }
+    
     
 }
