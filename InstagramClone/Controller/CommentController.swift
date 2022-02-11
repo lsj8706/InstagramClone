@@ -14,6 +14,7 @@ class CommentController: UICollectionViewController {
     //MARK: - Properties
     
     private let post: Post
+    private var comments = [Comment]()
     
     private lazy var commentInputView: CommentInputAccessoryView = {
         // 위치, 크기 설정 (frame)
@@ -39,6 +40,7 @@ class CommentController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
+        fetchComments()
     }
     
     override var inputAccessoryView: UIView? {
@@ -59,6 +61,16 @@ class CommentController: UICollectionViewController {
         tabBarController?.tabBar.isHidden = false
     }
     
+    //MARK: - API
+    
+    func fetchComments() {
+        CommentService.fetchComments(forPost: post.postID) { comments in
+            self.comments = comments
+            self.collectionView.reloadData()
+        }
+    }
+    
+    
     //MARK: - Helpers
     func configureCollectionView() {
         collectionView.backgroundColor = .white
@@ -77,12 +89,26 @@ class CommentController: UICollectionViewController {
 //MARK: - UICollectionViewDataSource
 extension CommentController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return comments.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CommentCell
+        cell.viewModel = CommentViewModel(comment: comments[indexPath.row])
         return cell
+    }
+    
+}
+
+//MARK: - UICollectionViewDelegate
+// 댓글 Cell에서 댓글을 작성한 유저의 프로필을 클릭하면 해당 유저의 ProfileController로 보내기
+extension CommentController {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let uid = comments[indexPath.row].uid
+        UserService.fetchUser(withUid: uid) { user in
+            let controller = ProfileController(user: user)
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
     }
     
 }
@@ -91,7 +117,9 @@ extension CommentController {
 //MARK: - UICollectionViewDelegateFlowLayout
 extension CommentController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 80)
+        let viewModel = CommentViewModel(comment: comments[indexPath.row])
+        let height = viewModel.size(forWidth: view.frame.width).height + 32
+        return CGSize(width: view.frame.width, height: height)
     }
     
 }
