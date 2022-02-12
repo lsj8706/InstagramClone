@@ -57,4 +57,29 @@ struct PostService {
         }
     }
     
+    
+    // post에 like버튼 클릭
+    static func likePost(post: Post, completion: @escaping(FirestoreCompletion)) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        COLLECTION_POSTS.document(post.postID).updateData(["likes" : post.likes+1])
+        
+        COLLECTION_POSTS.document(post.postID).collection("post-likes").document(uid).setData([:]) { error in
+            COLLECTION_USERS.document(uid).collection("user-likes").document(post.postID).setData([:], completion: completion)
+        }
+    }
+    
+    
+    // post에 unlike버튼 클릭
+    static func unlikePost(post: Post, completion: @escaping(FirestoreCompletion)) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        //guard post.likes > 0 else { return } // likes 수가 음수가 되는 것을 방지
+        
+        COLLECTION_POSTS.document(post.postID).updateData(["likes" : post.likes-1])
+        
+        COLLECTION_POSTS.document(post.postID).collection("post-likes").document(uid).delete { error in
+            COLLECTION_USERS.document(uid).collection("user-likes").document(post.postID).delete(completion: completion)
+        }
+    }
+    
 }

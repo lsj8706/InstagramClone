@@ -120,9 +120,32 @@ extension FeedController: UICollectionViewDelegateFlowLayout {
 
 //MARK: - FeedCellDelegate
 extension FeedController: FeedCellDelegate {
+    
     func cell(_ cell: FeedCell, wantsToShowCommentsFor post: Post) {
         let controller = CommentController(post: post)
         navigationController?.pushViewController(controller, animated: true)
     }
     
+    // Feed(post)의 좋아요 버튼을 눌렀을 때 좋아요 or 좋아요 해제 처리
+    func cell(_ cell: FeedCell, didLike post: Post) {
+        cell.viewModel?.post.didLike.toggle()
+        
+        if post.didLike {
+            PostService.unlikePost(post: post) { error in
+                if let error = error {
+                    print("DEBUG: Failed to unlike post with \(error.localizedDescription)")
+                }
+                cell.likeButton.setImage(#imageLiteral(resourceName: "like_unselected"), for: .normal)
+                cell.likeButton.tintColor = .black
+            }
+        } else {
+            PostService.likePost(post: post) { error in
+                if let error = error {
+                    print("DEBUG: Failed to like post with \(error.localizedDescription)")
+                }
+                cell.likeButton.setImage(#imageLiteral(resourceName: "like_selected"), for: .normal)
+                cell.likeButton.tintColor = .red
+            }
+        }
+    }
 }
