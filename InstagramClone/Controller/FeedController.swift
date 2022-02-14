@@ -15,7 +15,9 @@ class FeedController: UICollectionViewController {
     
     //MARK: - Properties
     
-    private var posts = [Post]()
+    private var posts = [Post]() {
+        didSet { collectionView.reloadData() }
+    }
     
     var post: Post?
     
@@ -52,10 +54,21 @@ class FeedController: UICollectionViewController {
         PostService.fetchPosts { posts in
             self.posts = posts
             self.collectionView.refreshControl?.endRefreshing()
-            self.collectionView.reloadData()
+            self.checkIfUserLikedPost()
         }
     }
     
+    func checkIfUserLikedPost() {
+        self.posts.forEach { post in
+            PostService.checkIfUserLikedPost(post: post) { didLike in
+                // 사용자가 해당 post를 like하고 있다면 post객체의 didLike 프로퍼티를 true로 수정해야 한다.
+                // 이를 위해 posts 배열에서 해당되는 post의 위치(인덱스)를 firstIndex() 함수를 통해 찾아내고 배열에서 해당 인덱스로 직접 접근하여 didLike를 수정한다.
+                if let index = self.posts.firstIndex(where: { $0.postID == post.postID }) {
+                    self.posts[index].didLike = didLike
+                }
+            }
+        }
+    }
     
     //MARK: - Helpers
     
@@ -137,6 +150,7 @@ extension FeedController: FeedCellDelegate {
                 }
                 cell.likeButton.setImage(#imageLiteral(resourceName: "like_unselected"), for: .normal)
                 cell.likeButton.tintColor = .black
+                cell.viewModel?.post.likes = post.likes - 1
             }
         } else {
             PostService.likePost(post: post) { error in
@@ -145,6 +159,8 @@ extension FeedController: FeedCellDelegate {
                 }
                 cell.likeButton.setImage(#imageLiteral(resourceName: "like_selected"), for: .normal)
                 cell.likeButton.tintColor = .red
+                cell.viewModel?.post.likes = post.likes + 1
+
             }
         }
     }

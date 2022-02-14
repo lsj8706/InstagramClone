@@ -73,12 +73,23 @@ struct PostService {
     // post에 unlike버튼 클릭
     static func unlikePost(post: Post, completion: @escaping(FirestoreCompletion)) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
-        //guard post.likes > 0 else { return } // likes 수가 음수가 되는 것을 방지
+        guard post.likes > 0 else { return } // likes 수가 음수가 되는 것을 방지
         
         COLLECTION_POSTS.document(post.postID).updateData(["likes" : post.likes-1])
         
         COLLECTION_POSTS.document(post.postID).collection("post-likes").document(uid).delete { error in
             COLLECTION_USERS.document(uid).collection("user-likes").document(post.postID).delete(completion: completion)
+        }
+    }
+    
+    
+    // 사용자가 특정 post를 like한 상태인지 확인
+    static func checkIfUserLikedPost(post: Post, completion: @escaping(Bool) -> Void) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+
+        COLLECTION_USERS.document(uid).collection("user-likes").document(post.postID).getDocument { snapshot, error in
+            guard let didLike = snapshot?.exists else { return }
+            completion(didLike)
         }
     }
     
