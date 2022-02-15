@@ -27,6 +27,9 @@
 		CE28E9BE27873B9100DE71A4 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE28E9BD27873B9100DE71A4 /* NotificationController.swift */; };
 		CE28E9C027873BA600DE71A4 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE28E9BF27873BA600DE71A4 /* ProfileController.swift */; };
 		CE347954279B02B6001D3EF7 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE347953279B02B6001D3EF7 /* UserCell.swift */; };
+		CE51404327BBDE7200C90E3F /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE51404227BBDE7200C90E3F /* NotificationCell.swift */; };
+		CE51404527BBE44800C90E3F /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE51404427BBE44800C90E3F /* Notification.swift */; };
+		CE51404727BBE72900C90E3F /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE51404627BBE72900C90E3F /* NotificationService.swift */; };
 		CE5720CD2795A58C00E02040 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5720CC2795A58C00E02040 /* ProfileCell.swift */; };
 		CE5720CF2795A5A400E02040 /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5720CE2795A5A400E02040 /* ProfileHeader.swift */; };
 		CE5B85A0278AC16C00602080 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B859F278AC16C00602080 /* LoginController.swift */; };
@@ -75,6 +78,9 @@
 		CE28E9BD27873B9100DE71A4 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		CE28E9BF27873BA600DE71A4 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		CE347953279B02B6001D3EF7 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		CE51404227BBDE7200C90E3F /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
+		CE51404427BBE44800C90E3F /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		CE51404627BBE72900C90E3F /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		CE5720CC2795A58C00E02040 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		CE5720CE2795A5A400E02040 /* ProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
 		CE5B859F278AC16C00602080 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -174,6 +180,7 @@
 				CEBE8CC12796E69400DCD4F6 /* UserService.swift */,
 				CE8571F727A6B0E100F3047A /* PostService.swift */,
 				CE0BA68827B414BC0087B7CA /* CommentService.swift */,
+				CE51404627BBE72900C90E3F /* NotificationService.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -216,6 +223,7 @@
 				CE09978227A4419700230FEA /* InputTextView.swift */,
 				CE96B10D27B14FD60025C02B /* CommentCell.swift */,
 				CE96B10F27B15A310025C02B /* CommentInputAccessoryView.swift */,
+				CE51404227BBDE7200C90E3F /* NotificationCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -226,6 +234,7 @@
 				CEBE8CC52796E89600DCD4F6 /* User.swift */,
 				CE61C7CC27A96C7E00FD4A1E /* Post.swift */,
 				CEED057727B68CD9003D694D /* Comment.swift */,
+				CE51404427BBE44800C90E3F /* Notification.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -385,6 +394,7 @@
 				CE28E9BC27873B8200DE71A4 /* ImageSelectorController.swift in Sources */,
 				CE0BA68927B414BC0087B7CA /* CommentService.swift in Sources */,
 				CEED057827B68CD9003D694D /* Comment.swift in Sources */,
+				CE51404527BBE44800C90E3F /* Notification.swift in Sources */,
 				CE28E9BE27873B9100DE71A4 /* NotificationController.swift in Sources */,
 				CEEBBA9D278C7DC500053816 /* AuthenticationViewModel.swift in Sources */,
 				CE347954279B02B6001D3EF7 /* UserCell.swift in Sources */,
@@ -400,6 +410,7 @@
 				CE7FBE0E279D81B0009C00A6 /* UserCellViewModel.swift in Sources */,
 				CE28E9B827873B6000DE71A4 /* FeedController.swift in Sources */,
 				CE28E9B62787379300DE71A4 /* MainTabController.swift in Sources */,
+				CE51404727BBE72900C90E3F /* NotificationService.swift in Sources */,
 				CE825A652791A8F700E528B7 /* ImageUploader.swift in Sources */,
 				CE61C7CD27A96C7E00FD4A1E /* Post.swift in Sources */,
 				CE825A672791A90500E528B7 /* AuthService.swift in Sources */,
@@ -407,6 +418,7 @@
 				CEBE8CC22796E69400DCD4F6 /* UserService.swift in Sources */,
 				CE5720CD2795A58C00E02040 /* ProfileCell.swift in Sources */,
 				CE08D59F278891C900049BF6 /* Extensions.swift in Sources */,
+				CE51404327BBDE7200C90E3F /* NotificationCell.swift in Sources */,
 				CE28E99D2787369000DE71A4 /* SceneDelegate.swift in Sources */,
 				CE96B10E27B14FD60025C02B /* CommentCell.swift in Sources */,
 			);
