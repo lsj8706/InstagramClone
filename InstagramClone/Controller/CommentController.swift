@@ -133,13 +133,15 @@ extension CommentController: CommentInputAccessoryViewDelegate {
         
         // MainTabController로 부터 현재 로그인하여 사용중인 유저 객체를 가져옴
         guard let tab = tabBarController as? MainTabController else { return }
-        guard let user = tab.user else { return }
+        guard let currentUser = tab.user else { return }
         
         showLoader(true)
         
-        CommentService.uploadComment(comment: comment, postID: post.postID, user: user) { error in
+        CommentService.uploadComment(comment: comment, postID: post.postID, user: currentUser) { error in
             self.showLoader(false)
             inputView.clearCommentTextView()
+            
+            NotificationService.uploadNotification(toUid: self.post.ownerUid, fromUser: currentUser, type: .comment, post: self.post)
 
         }
     }

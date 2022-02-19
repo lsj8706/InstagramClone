@@ -150,6 +150,10 @@ extension FeedController: FeedCellDelegate {
     func cell(_ cell: FeedCell, didLike post: Post) {
         cell.viewModel?.post.didLike.toggle()
         
+        // MainTabController로 부터 현재 로그인하여 사용중인 유저 객체를 가져옴
+        guard let tab = tabBarController as? MainTabController else { return }
+        guard let currentUser = tab.user else { return }
+        
         if post.didLike {
             PostService.unlikePost(post: post) { error in
                 if let error = error {
@@ -169,8 +173,7 @@ extension FeedController: FeedCellDelegate {
                 cell.viewModel?.post.likes = post.likes + 1
                 
                 NotificationService.uploadNotification(toUid: post.ownerUid,
-                                                       profileImageUrl: post.ownerImageUrl,
-                                                       username: post.ownerUsername,
+                                                       fromUser: currentUser,
                                                        type: .like,
                                                        post: post)
             }
