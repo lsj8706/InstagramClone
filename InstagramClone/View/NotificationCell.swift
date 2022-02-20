@@ -7,6 +7,12 @@
 
 import UIKit
 
+protocol NotificationCellDelegate: AnyObject {
+    func cell(_ cell: NotificationCell, wantsToFollow uid: String)
+    func cell(_ ell: NotificationCell, wantsToUnfollow uid: String)
+    func cell(_ cell: NotificationCell, wantsToViewPost postId: String)
+}
+
 class NotificationCell: UITableViewCell {
     
     //MARK: - Properties
@@ -14,6 +20,8 @@ class NotificationCell: UITableViewCell {
     var viewModel: NotificationViewModel? {
         didSet { configure() }
     }
+    
+    weak var delegate: NotificationCellDelegate?
     
     private let profileImageView: UIImageView = {
        let iv = UIImageView()
@@ -31,7 +39,7 @@ class NotificationCell: UITableViewCell {
         return label
     }()
     
-    private let postImageView: UIImageView = {
+    private lazy var postImageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
@@ -44,7 +52,7 @@ class NotificationCell: UITableViewCell {
         return iv
     }()
     
-    private let followButton: UIButton = {
+    private lazy var followButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Loading", for: .normal)
         button.layer.cornerRadius = 3
@@ -79,9 +87,7 @@ class NotificationCell: UITableViewCell {
         addSubview(infoLabel)
         infoLabel.centerY(inView: profileImageView, leftAnchor: profileImageView.rightAnchor, paddingLeft: 8)
         infoLabel.anchor(right: followButton.leftAnchor, paddingRight: 4)
-        
-        followButton.isHidden = true
-        
+                
     }
     
     required init?(coder: NSCoder) {
@@ -91,11 +97,11 @@ class NotificationCell: UITableViewCell {
     //MARK: - Actions
     
     @objc func handleFollowTapped() {
-        
     }
     
     @objc func handlePostTapped() {
-        
+        guard let postId = viewModel?.notification.postId else { return }
+        delegate?.cell(self, wantsToViewPost: postId)
     }
     
     //MARK: - Helpers
@@ -109,6 +115,10 @@ class NotificationCell: UITableViewCell {
         
         followButton.isHidden = viewModel.shouldHideFollowButton
         postImageView.isHidden = viewModel.shouldHidePostImage
+        
+        followButton.setTitle(viewModel.followButtonText, for: .normal)
+        followButton.backgroundColor = viewModel.followButtonBackgroundColor
+        followButton.setTitleColor(viewModel.followButtonTextColor, for: .normal)
     }
     
 }
