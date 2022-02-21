@@ -57,6 +57,16 @@ struct PostService {
         }
     }
     
+    // 특정 post 가져오기
+    static func fetchPost(withPostId postId: String, completion: @escaping(Post) -> Void) {
+        COLLECTION_POSTS.document(postId).getDocument { snapshot, _ in
+            guard let snapshot = snapshot else { return }
+            guard let data = snapshot.data() else { return }
+            let post = Post(postId: snapshot.documentID, dictionary: data)
+            completion(post)
+        }
+    }
+    
     
     // post에 like버튼 클릭
     static func likePost(post: Post, completion: @escaping(FirestoreCompletion)) {
@@ -92,5 +102,6 @@ struct PostService {
             completion(didLike)
         }
     }
+
     
 }
