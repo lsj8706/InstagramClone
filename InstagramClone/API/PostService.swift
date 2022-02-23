@@ -102,6 +102,40 @@ struct PostService {
             completion(didLike)
         }
     }
+    
+    // 사용자가 follow 중인 유저들의 feed들만 가져오기
+    static func fetchFeedPosts(completion: @escaping([Post]) -> Void) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        var posts = [Post]()
+        
+        COLLECTION_USERS.document(uid).collection("user-feed").getDocuments { snapshot, error in
+            snapshot?.documents.forEach({ document in
+                fetchPost(withPostId: document.documentID) { post in
+                    posts.append(post)
+                    completion(posts)
+                }
+            })
+
+        }
+    }
+    
+    
+    // 특정 유저를 following하기 시작하면 해당 유저의 feed들을 현재 사용중인 사용자의 화면에 띄워줄 feed DB에 추가
+    static func updateUserFeedAfterFollowing(user: User) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let query = COLLECTION_POSTS.whereField("ownerUid", isEqualTo: user.uid)
+        query.getDocuments { snapshot, error in
+            guard let documents = snapshot?.documents else { return }
+            
+            let docIDs = documents.map({ $0.documentID })
+            
+            docIDs.forEach { id in
+                COLLECTION_USERS.document(uid).collection("user-feed").document(id).setData([:])
+            }
+            
+        }
+        
+    }
 
     
 }

@@ -51,7 +51,8 @@ class FeedController: UICollectionViewController {
     
     func fetchPosts() {
         guard post == nil else { return } // feed 화면에서 보여주어야 할 feed가 특정한 한개의 post라면 모든 post를 불러올 필요 x
-        PostService.fetchPosts { posts in
+
+        PostService.fetchFeedPosts { posts in
             self.posts = posts
             self.collectionView.refreshControl?.endRefreshing()
             self.checkIfUserLikedPost()
