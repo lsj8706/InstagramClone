@@ -31,7 +31,9 @@ class FeedController: UICollectionViewController {
     //MARK: - Actions
     
     @objc func handleRefresh() {
+        posts.removeAll()
         fetchPosts()
+        
     }
     
     @objc func handleLogout() {
@@ -57,6 +59,8 @@ class FeedController: UICollectionViewController {
             self.collectionView.refreshControl?.endRefreshing()
             self.checkIfUserLikedPost()
         }
+        
+        self.collectionView.refreshControl?.endRefreshing()
     }
     
     func checkIfUserLikedPost() {

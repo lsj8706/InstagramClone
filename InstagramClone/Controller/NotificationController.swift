@@ -120,6 +120,7 @@ extension NotificationController: NotificationCellDelegate {
         UserService.unfollow(uid: uid) { _ in
             self.showLoader(false)
             cell.viewModel?.notification.userIsFollowed.toggle()
+            
         }
     }
     
