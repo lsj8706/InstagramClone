@@ -7,9 +7,17 @@
 
 import UIKit
 
+protocol ResetPasswordControllerDelegate: AnyObject {
+    func controllerDidSendResetPassword(_ controller: ResetPasswordController)
+}
+
 class ResetPasswordController: UIViewController {
     
     //MARK: - Properties
+    
+    private var viewModel = ResetPasswordViewModel()
+    
+    weak var delegate: ResetPasswordControllerDelegate?
     
     private let emailTextField = CustomTextField(placeholder: "Email")
     
@@ -46,6 +54,8 @@ class ResetPasswordController: UIViewController {
     func configureUI() {
         configureGradientLayer()
         
+        emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        
         view.addSubview(backButton)
         backButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, paddingTop: 16, paddingLeft: 16)
         
@@ -65,10 +75,39 @@ class ResetPasswordController: UIViewController {
     //MARK: - Actions
     
     @objc func handleResetPassword() {
+        guard let email = emailTextField.text else { return }
         
+        showLoader(true)
+        AuthService.resetPassword(withEmail: email) { error in
+            if let error = error {
+                self.showLoader(false)
+                self.showMessage(withTitle: "Error", message: error.localizedDescription)
+                return
+            }
+            
+            self.delegate?.controllerDidSendResetPassword(self)
+        }
+    }
+    
+    @objc func textDidChange(sender: UITextField) {
+        if sender == emailTextField {
+            viewModel.email = sender.text
+        }
+        
+        updateForm()
     }
 
     @objc func handleDismissal() {
         navigationController?.popViewController(animated: true)
+    }
+}
+
+
+//MARK: - FormVeiwModel Protocol
+extension ResetPasswordController: FormViewModel {
+    func updateForm() {
+        resetPasswordButton.backgroundColor = viewModel.buttonBackgroundColor
+        resetPasswordButton.setTitleColor(viewModel.buttonTitleColor, for: .normal)
+        resetPasswordButton.isEnabled = viewModel.formIsValid
     }
 }
