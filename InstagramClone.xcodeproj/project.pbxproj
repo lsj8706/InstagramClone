@@ -38,6 +38,7 @@
 		CE5B85A4278ACEBB00602080 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B85A3278ACEBB00602080 /* CustomTextField.swift */; };
 		CE61C7CD27A96C7E00FD4A1E /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE61C7CC27A96C7E00FD4A1E /* Post.swift */; };
 		CE61C7CF27A9704500FD4A1E /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE61C7CE27A9704500FD4A1E /* PostViewModel.swift */; };
+		CE7828ED27CA59C700E8B0EA /* ResetPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7828EC27CA59C700E8B0EA /* ResetPasswordController.swift */; };
 		CE7FBE0E279D81B0009C00A6 /* UserCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7FBE0D279D81B0009C00A6 /* UserCellViewModel.swift */; };
 		CE825A652791A8F700E528B7 /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE825A642791A8F700E528B7 /* ImageUploader.swift */; };
 		CE825A672791A90500E528B7 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE825A662791A90400E528B7 /* AuthService.swift */; };
@@ -90,6 +91,7 @@
 		CE5B85A3278ACEBB00602080 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		CE61C7CC27A96C7E00FD4A1E /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		CE61C7CE27A9704500FD4A1E /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
+		CE7828EC27CA59C700E8B0EA /* ResetPasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordController.swift; sourceTree = "<group>"; };
 		CE7FBE0D279D81B0009C00A6 /* UserCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellViewModel.swift; sourceTree = "<group>"; };
 		CE825A642791A8F700E528B7 /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
 		CE825A662791A90400E528B7 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 			children = (
 				CE5B859F278AC16C00602080 /* LoginController.swift */,
 				CE5B85A1278AC18200602080 /* RegistrationController.swift */,
+				CE7828EC27CA59C700E8B0EA /* ResetPasswordController.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 				CE96B11027B15A310025C02B /* CommentInputAccessoryView.swift in Sources */,
 				CEBE8CC82796ED6800DCD4F6 /* ProfileHeaderViewModel.swift in Sources */,
 				CE09978327A4419700230FEA /* InputTextView.swift in Sources */,
+				CE7828ED27CA59C700E8B0EA /* ResetPasswordController.swift in Sources */,
 				CEBE8CC42796E6D800DCD4F6 /* Constants.swift in Sources */,
 				CE5B85A2278AC18200602080 /* RegistrationController.swift in Sources */,
 				CE7FBE0E279D81B0009C00A6 /* UserCellViewModel.swift in Sources */,
