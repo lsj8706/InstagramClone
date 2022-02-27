@@ -19,13 +19,19 @@ class FeedController: UICollectionViewController {
         didSet { collectionView.reloadData() }
     }
     
-    var post: Post?
+    var post: Post? {
+        didSet { collectionView.reloadData() }
+    }
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
         fetchPosts()
+        
+        if post != nil {
+            checkIfUserLikedPost()
+        }
     }
     
     //MARK: - Actions
@@ -64,12 +70,18 @@ class FeedController: UICollectionViewController {
     }
     
     func checkIfUserLikedPost() {
-        self.posts.forEach { post in
+        if let post = post {
             PostService.checkIfUserLikedPost(post: post) { didLike in
-                // 사용자가 해당 post를 like하고 있다면 post객체의 didLike 프로퍼티를 true로 수정해야 한다.
-                // 이를 위해 posts 배열에서 해당되는 post의 위치(인덱스)를 firstIndex() 함수를 통해 찾아내고 배열에서 해당 인덱스로 직접 접근하여 didLike를 수정한다.
-                if let index = self.posts.firstIndex(where: { $0.postID == post.postID }) {
-                    self.posts[index].didLike = didLike
+                self.post?.didLike = didLike
+            }
+        } else {
+            self.posts.forEach { post in
+                PostService.checkIfUserLikedPost(post: post) { didLike in
+                    // 사용자가 해당 post를 like하고 있다면 post객체의 didLike 프로퍼티를 true로 수정해야 한다.
+                    // 이를 위해 posts 배열에서 해당되는 post의 위치(인덱스)를 firstIndex() 함수를 통해 찾아내고 배열에서 해당 인덱스로 직접 접근하여 didLike를 수정한다.
+                    if let index = self.posts.firstIndex(where: { $0.postID == post.postID }) {
+                        self.posts[index].didLike = didLike
+                    }
                 }
             }
         }
