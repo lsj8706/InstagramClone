@@ -82,6 +82,7 @@ class SearchController: UIViewController {
         collectionView.fillSuperview()
     }
     
+    // searchBar 설정
     func configureSearchController() {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false

@@ -89,6 +89,7 @@ class NotificationCell: UITableViewCell {
         contentView.addSubview(infoLabel)
         infoLabel.centerY(inView: profileImageView, leftAnchor: profileImageView.rightAnchor, paddingLeft: 8)
         infoLabel.anchor(right: followButton.leftAnchor, paddingRight: 4)
+        
                 
     }
     

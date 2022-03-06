@@ -37,5 +37,4 @@ struct UserStats {
     let followers: Int
     let following: Int
     let posts: Int
-    
 }
